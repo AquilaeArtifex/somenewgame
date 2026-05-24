@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chess</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header>
+    <div class="logo">♟ GRANDMASTER</div>
+    <nav>
+      <button class="nav-btn active" data-mode="pvp">Player vs Player</button>
+      <button class="nav-btn" data-mode="pve">vs Computer</button>
+    </nav>
+    <div class="header-right">
+      <button id="newGameBtn" class="btn-new">New Game</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="sidebar left-sidebar">
+      <div class="player-card" id="blackPlayer">
+        <div class="player-color black-dot"></div>
+        <div class="player-info">
+          <span class="player-name">Black</span>
+          <span class="player-label">Player 2</span>
+        </div>
+        <div class="captured-pieces" id="capturedByBlack"></div>
+        <div class="timer" id="blackTimer">10:00</div>
+      </div>
+
+      <div class="move-log-wrap">
+        <h3 class="section-title">Move Log</h3>
+        <div class="move-log" id="moveLog"></div>
+      </div>
+    </div>
+
+    <div class="board-area">
+      <div class="board-wrap">
+        <div class="rank-labels" id="rankLabels"></div>
+        <div id="chessboard" class="chessboard"></div>
+        <div class="file-labels" id="fileLabels"></div>
+      </div>
+    </div>
+
+    <div class="sidebar right-sidebar">
+      <div class="player-card" id="whitePlayer">
+        <div class="player-color white-dot"></div>
+        <div class="player-info">
+          <span class="player-name">White</span>
+          <span class="player-label">Player 1</span>
+        </div>
+        <div class="captured-pieces" id="capturedByWhite"></div>
+        <div class="timer" id="whiteTimer">10:00</div>
+      </div>
+
+      <div class="status-box">
+        <div id="statusMsg" class="status-msg">White's turn</div>
+      </div>
+
+      <div class="controls">
+        <h3 class="section-title">Controls</h3>
+        <button class="ctrl-btn" id="undoBtn">↩ Undo Move</button>
+        <button class="ctrl-btn" id="flipBtn">⇅ Flip Board</button>
+        <button class="ctrl-btn danger" id="resignBtn">⚑ Resign</button>
+      </div>
+
+      <div class="difficulty-wrap" id="difficultyWrap" style="display:none">
+        <h3 class="section-title">Difficulty</h3>
+        <div class="difficulty-btns">
+          <button class="diff-btn active" data-depth="1">Beginner</button>
+          <button class="diff-btn" data-depth="2">Intermediate</button>
+          <button class="diff-btn" data-depth="3">Advanced</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Promotion Modal -->
+  <div id="promotionModal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Promote Pawn</h3>
+      <div class="promo-choices" id="promoChoices"></div>
+    </div>
+  </div>
+
+  <!-- Game Over Modal -->
+  <div id="gameOverModal" class="modal hidden">
+    <div class="modal-box">
+      <div class="game-over-icon">♛</div>
+      <h2 id="gameOverTitle">Game Over</h2>
+      <p id="gameOverMsg"></p>
+      <button class="btn-new" id="playAgainBtn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="chess.js"></script>
+</body>
+</html>
